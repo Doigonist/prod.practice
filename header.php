@@ -37,9 +37,10 @@ require_once("config.php");
             if (!isset($_SESSION['auth'])){
                 echo '
                  <li class="nav-item">
-                    <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Войти</a>
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">Войти</a>
                  </li>
                 ';
+                echo '<a class="nav-link" data-bs-target="#exampleModal2" data-bs-toggle="modal">Зарегистрироваться</a>';
             }else{
                  echo "
                  <li class='nav-item'>
@@ -78,7 +79,6 @@ require_once("config.php");
 
       </div>
       <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-target="#exampleModal2" data-bs-toggle="modal">Зарегистрироваться</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
             <button type="submit" class="btn btn-primary" id="login_button">Войти</button>
       </div>
@@ -94,24 +94,24 @@ require_once("config.php");
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-         <form>
+         <form action="reg-handler.php" method="POST">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Логин</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="text" class="form-control" name="login" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Пароль</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" class="form-control" name="pass" id="exampleInputPassword1">
                 </div>
                  <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Повторите пароль</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" class="form-control" name="repass" id="exampleInputPassword1">
                 </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-        <button type="button" class="btn btn-primary">Зарегистрироваться</button>
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
           </form>
       </div>
     </div>
