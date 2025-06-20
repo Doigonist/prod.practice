@@ -41,7 +41,22 @@ require_once("config.php");
                  </li>
                 ';
                 echo '<a class="nav-link" data-bs-target="#exampleModal2" data-bs-toggle="modal">Зарегистрироваться</a>';
-            }else{
+            }elseif(isset($_SESSION['auth']) && CheckForAdmin($link,$_SESSION['user'])){
+              echo "
+                 <li class='nav-item'>
+                     <a class='navbar-brand' href='profile.php'>
+                        <img src='".$_SESSION["avatar"]."' alt='Logo' width='30' height='30' class='d-inline-block align-text-top'>
+                        ".$_SESSION['user']."
+                     </a>
+                 </li>
+                 <li class='nav-item'>
+                     <a class='navbar-brand' href='admin-page.php'>
+                      Админ Панель
+                     </a>
+                 </li>
+                ";
+            }
+            else{
                  echo "
                  <li class='nav-item'>
                      <a class='navbar-brand' href='profile.php'>

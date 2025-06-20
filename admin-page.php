@@ -1,6 +1,11 @@
 <?php
 require_once('config.php');
 require_once('qol.php');
+if (CheckForAdmin($link,$_SESSION['user'])){
+    
+}else{
+    header("Location: index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +16,7 @@ require_once('qol.php');
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Это админа страница.</h1>
+    <h1>Это админ страница.</h1>
     <?php if(!checkUser()){
         echo "<h2>А ты... Потенциальный нарушитель!</h2>";
     } ?>
@@ -22,6 +27,8 @@ require_once('qol.php');
         <button class="uploadbtn" type="submit">Выложить проект</button>
         </form>
     </div>
+<br><hr>
+<a href='logout.php'>Удаление сессии</a>
 </body>
 <script>
 </script>
