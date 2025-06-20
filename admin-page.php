@@ -1,8 +1,9 @@
 <?php
 require_once('config.php');
 require_once('qol.php');
+require_once('header.php');
 if (CheckForAdmin($link,$_SESSION['user'])){
-    
+
 }else{
     header("Location: index.php");
 }
@@ -19,14 +20,15 @@ if (CheckForAdmin($link,$_SESSION['user'])){
     <h1>Это админ страница.</h1>
     <?php if(!checkUser()){
         echo "<h2>А ты... Потенциальный нарушитель!</h2>";
-    } ?>
-    <div id="github-access">
+    }else{
+        echo "<div id='github-access'>
         <p>Github</p>
-        <p class="version">Текущая версия проекта - <?=file_get_contents('version.txt')?></p>
-        <form action="uploader.php">
-        <button class="uploadbtn" type="submit">Выложить проект</button>
+        <p class='version'>Текущая версия проекта - ". file_get_contents('version.txt')."</p>
+        <form action='uploader.php'>
+        <button class='uploadbtn' type='submit'>Выложить проект</button>
         </form>
-    </div>
+    </div>";
+    } ?>
 <br><hr>
 <a href='logout.php'>Удаление сессии</a>
 </body>
